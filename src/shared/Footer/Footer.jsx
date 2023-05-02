@@ -1,9 +1,9 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./Footer.css";
+import FooterLast from "./FooterLast";
 import FooterLeft from "./FooterLeft";
 import FooterRight from "./FooterRight";
-import FooterLast from "./FooterLast";
 
 const Footer = () => {
   return (
@@ -19,7 +19,7 @@ const Footer = () => {
           <FooterLast></FooterLast>
         </Col>
       </Row>
-      <div className="text-center footer-primary">
+      <div className="text-center footer-primary mt-3">
         Copyright © 2012 - 2023 TermsFeed®. All rights reserved.
       </div>
     </Container>

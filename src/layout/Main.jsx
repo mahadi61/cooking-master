@@ -11,7 +11,7 @@ const Main = () => {
       <Container>
         <Outlet></Outlet>
       </Container>
-      <div className="footer-bg py-3">
+      <div className="footer-bg py-4">
         <Footer></Footer>
       </div>
     </div>
