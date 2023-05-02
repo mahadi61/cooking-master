@@ -1,9 +1,9 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
+import RecipeList from "../All recipes/RecipeList";
 import Banner from "../Banner/Banner";
 import Chef from "../Chef/Chef";
-import Recipes from "../../recipes/Recipes";
 
 const Home = () => {
   const chefData = useLoaderData();
@@ -12,7 +12,7 @@ const Home = () => {
       <Container>
         <Banner></Banner>
         <Chef chefData={chefData}></Chef>
-        <Recipes></Recipes>
+        <RecipeList></RecipeList>
       </Container>
     </div>
   );

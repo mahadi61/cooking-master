@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import { BiLike } from "react-icons/bi";
 import { FcLike } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 const ChefCard = ({ chef }) => {
   const {
@@ -40,9 +41,11 @@ const ChefCard = ({ chef }) => {
             <span>Total recipes: {num_of_recipes}</span>
             <FcLike />
           </p>
-          <Button className="brand-color-bg fw-bold border border-0">
-            See Recipes
-          </Button>
+          <Link to="/recipes">
+            <Button className="brand-color-bg fw-bold border border-0">
+              See Recipes
+            </Button>
+          </Link>
         </Card.Body>
       </Card>
     </Col>

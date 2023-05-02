@@ -17,12 +17,12 @@ const Header = () => {
         </Link>
       </Navbar.Brand>
       <Nav className="mx-auto fs-4 fw-semi">
-        <Nav.Link to="/" className="text-decoration-none">
+        <Link to="/" className="text-decoration-none nav-color me-3">
           Home
-        </Nav.Link>
-        <Nav.Link to="/blog" className="text-decoration-none">
+        </Link>
+        <Link to="/blog" className="text-decoration-none nav-color">
           Blog 
-        </Nav.Link>
+        </Link>
       </Nav>
       <Nav>
         <CgProfile className="fs-1 me-3" />
