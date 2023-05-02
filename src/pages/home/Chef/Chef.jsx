@@ -3,7 +3,6 @@ import { Row } from "react-bootstrap";
 import ChefCard from "./ChefCard";
 
 const Chef = ({ chefData }) => {
-  console.log(chefData);
   return (
     <div className="my-3">
       <h3 className="text-center fw-bold">Cooking Master's</h3>

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const ChefCard = ({ chef }) => {
   const {
+    chef_id,
     chef_picture,
     chef_name,
     years_of_experience,
@@ -41,7 +42,7 @@ const ChefCard = ({ chef }) => {
             <span>Total recipes: {num_of_recipes}</span>
             <FcLike />
           </p>
-          <Link to="/recipes">
+          <Link to={`/recipes/${chef_id}`}>
             <Button className="brand-color-bg fw-bold border border-0">
               See Recipes
             </Button>

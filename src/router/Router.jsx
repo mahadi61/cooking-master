@@ -25,8 +25,10 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/recipes",
+        path: "/recipes/:id",
         element: <Recipes></Recipes>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/recipes/${params.id}`),
       },
       {
         path: "/blog",
