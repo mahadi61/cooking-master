@@ -12,15 +12,21 @@ const Header = () => {
       variant="white"
     >
       <Navbar.Brand to="/">
-        <span className="fs-3 fw-bold brand-color ">Cooking Master</span>
+        <Link to="/" className="text-decoration-none">
+          <span className="fs-3 fw-bold brand-color ">Cooking Master</span>
+        </Link>
       </Navbar.Brand>
       <Nav className="mx-auto fs-4 fw-semi">
-        <Nav.Link>Home</Nav.Link>
-        <Nav.Link>Blog </Nav.Link>
+        <Nav.Link to="/" className="text-decoration-none">
+          Home
+        </Nav.Link>
+        <Nav.Link to="/blog" className="text-decoration-none">
+          Blog 
+        </Nav.Link>
       </Nav>
       <Nav>
         <CgProfile className="fs-1 me-3" />
-        <Link to="/">
+        <Link to="/login">
           <Button className="brand-color-bg fw-bold border border-0">
             Login
           </Button>

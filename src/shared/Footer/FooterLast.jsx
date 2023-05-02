@@ -13,7 +13,8 @@ const FooterLast = () => {
           Subscribe
         </Button>
         <Form.Control
-          aria-label=" text with button addon"
+          placeholder="Enter you email"
+          aria-label=""
           aria-describedby="basic-addon1"
         />
       </InputGroup>
