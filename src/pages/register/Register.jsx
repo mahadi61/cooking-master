@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { BsGithub } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { BsGithub } from "react-icons/bs";
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,7 +21,16 @@ const Login = () => {
             className="border border-black shadow-lg p-3 mb-5 bg-body-tertiary rounded p-3"
             onSubmit={handleSubmit}
           >
-            <h1 className="text-center mb-4">Login</h1>
+            <h1 className="text-center mb-4">Register</h1>
+            <Form.Group>
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Your Name"
+                name="name"
+                required
+              />
+            </Form.Group>
             <Form.Group>
               <Form.Label>Email address</Form.Label>
               <Form.Control
@@ -31,6 +40,15 @@ const Login = () => {
                 value={email}
                 onChange={handleEmailChange}
                 required
+              />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label>Photo Url</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Your Photo Url"
+                name="url"
               />
             </Form.Group>
 
@@ -50,7 +68,7 @@ const Login = () => {
               className="brand-color-bg fw-bold border border-0 w-100 mt-4"
               type="submit"
             >
-              Login
+              Register
             </Button>
             <hr className="" />
 
@@ -74,9 +92,9 @@ const Login = () => {
             </Button>
 
             <p className="text-center mt-2">
-              New to Cooking Master?{" "}
-              <Link to="/register" className="text-warning">
-                Register Here
+              Already have an account?
+              <Link to="/login" className="text-warning">
+                Login
               </Link>
             </p>
           </Form>
@@ -86,4 +104,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
