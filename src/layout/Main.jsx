@@ -7,11 +7,13 @@ import Header from "../shared/Header/Header";
 const Main = () => {
   return (
     <div>
+      <Header></Header>
       <Container>
-        <Header></Header>
         <Outlet></Outlet>
-        <Footer></Footer>
       </Container>
+      <div className="footer-bg py-3">
+        <Footer></Footer>
+      </div>
     </div>
   );
 };
