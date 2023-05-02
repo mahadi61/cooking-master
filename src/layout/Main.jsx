@@ -1,8 +1,9 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import Banner from "../pages/home/Banner/Banner";
 import Footer from "../shared/Footer/Footer";
 import Header from "../shared/Header/Header";
+import Home from "../pages/home/Home/Home";
+import { Outlet } from "react-router-dom";
 
 const Main = () => {
   return (
@@ -10,7 +11,8 @@ const Main = () => {
       <Container>
         <Header></Header>
       </Container>
-      <Banner></Banner>
+
+      <Outlet></Outlet>
 
       <Footer></Footer>
     </div>

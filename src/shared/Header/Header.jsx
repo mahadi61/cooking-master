@@ -16,7 +16,7 @@ const Header = () => {
       </Nav>
       <Nav>
         <CgProfile className="fs-1 me-3" />
-        <Link to="/login">
+        <Link to="/">
           <Button className="brand-color-bg fw-bold border border-0">
             Login
           </Button>
