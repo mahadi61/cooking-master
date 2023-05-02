@@ -6,7 +6,11 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <Navbar bg="white" variant="white">
+    <Navbar
+      className="shadow p-3 mb-2 bg-body-tertiary rounded"
+      bg="white"
+      variant="white"
+    >
       <Navbar.Brand to="/">
         <span className="fs-3 fw-bold brand-color ">Cooking Master</span>
       </Navbar.Brand>

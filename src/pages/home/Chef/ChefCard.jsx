@@ -14,10 +14,10 @@ const ChefCard = ({ chef }) => {
   } = chef;
   return (
     <Col>
-      <Card className="d-flex flex-column">
+      <Card className="d-flex flex-column justify-content-between">
         <div className="img-height">
           <Card.Img
-            variant="top"
+            style={{ height: "400px" }}
             className="object-fit-cover border rounded"
             src={chef_picture}
           />

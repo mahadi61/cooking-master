@@ -1,20 +1,17 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
 import Footer from "../shared/Footer/Footer";
 import Header from "../shared/Header/Header";
-import Home from "../pages/home/Home/Home";
-import { Outlet } from "react-router-dom";
 
 const Main = () => {
   return (
     <div>
       <Container>
         <Header></Header>
+        <Outlet></Outlet>
+        <Footer></Footer>
       </Container>
-
-      <Outlet></Outlet>
-
-      <Footer></Footer>
     </div>
   );
 };

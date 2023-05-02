@@ -1,15 +1,15 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
-import Chef from "../Chef/Chef";
 import Banner from "../Banner/Banner";
+import Chef from "../Chef/Chef";
 
 const Home = () => {
   const chefData = useLoaderData();
   return (
     <div>
-      <Banner></Banner>
       <Container>
+        <Banner></Banner>
         <Chef chefData={chefData}></Chef>
       </Container>
     </div>
