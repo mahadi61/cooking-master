@@ -1,17 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { BsGithub } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { createWithEmailPassword } = useContext(AuthContext);
 
-  const handleEmailChange = (event) => setEmail(event.target.value);
-  const handlePasswordChange = (event) => setPassword(event.target.value);
   const handleSubmit = (event) => {
     event.preventDefault();
-    // TODO: handle login submission
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoUrl = form.url.value;
+
+    createWithEmailPassword(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    form.reset();
   };
   return (
     <Container className="my-5">
@@ -37,8 +49,6 @@ const Register = () => {
                 type="email"
                 placeholder="Enter email"
                 name="email"
-                value={email}
-                onChange={handleEmailChange}
                 required
               />
             </Form.Group>
@@ -58,8 +68,6 @@ const Register = () => {
                 type="password"
                 placeholder="Password"
                 name="password"
-                value={password}
-                onChange={handlePasswordChange}
                 required
               />
             </Form.Group>

@@ -1,14 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Button, Nav, Navbar } from "react-bootstrap";
 import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProviders";
 import "./Header.css";
 
 const Header = () => {
-  const { name } = useContext(AuthContext);
-  console.log(name);
-
   return (
     <Navbar
       className="shadow p-3 mb-2 bg-body-tertiary rounded"
