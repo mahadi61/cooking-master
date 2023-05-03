@@ -8,9 +8,8 @@ const Main = () => {
   return (
     <div>
       <Header></Header>
-      <Container>
-        <Outlet></Outlet>
-      </Container>
+      <Outlet></Outlet>
+
       <div className="footer-bg py-4">
         <Footer></Footer>
       </div>

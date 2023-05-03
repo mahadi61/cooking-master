@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { BsGithub } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Login = () => {
-  const { singInWithEmail } = useContext(AuthContext);
+  const { singInWithEmail, singInWithGoogle, singInWithGithub } =
+    useContext(AuthContext);
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,15 +18,33 @@ const Login = () => {
     singInWithEmail(email, password)
       .then((result) => {
         const user = result.user;
-        console.log("login done");
+        form.reset();
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    singInWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleGithubSingIn = () => {
+    singInWithGithub()
+      .then((result) => {
+        const user = result.user;
         console.log(user);
       })
       .catch((error) => {
         console.log(error);
       });
-
-    form.reset();
   };
+
   return (
     <Container className="my-5">
       <Row className="justify-content-center">
@@ -53,7 +73,7 @@ const Login = () => {
                 required
               />
             </Form.Group>
-
+            <span className="text-danger mt-2">{error}</span>
             <Button
               className="brand-color-bg fw-bold border border-0 w-100 mt-4"
               type="submit"
@@ -63,6 +83,7 @@ const Login = () => {
             <hr className="" />
 
             <Button
+              onClick={handleGoogleSignIn}
               variant="light"
               className="d-flex justify-content-center gap-2 w-100"
             >
@@ -74,6 +95,7 @@ const Login = () => {
               Continue with Google
             </Button>
             <Button
+              onClick={handleGithubSingIn}
               variant="light"
               className="d-flex justify-content-center gap-2 mt-3 w-100"
             >

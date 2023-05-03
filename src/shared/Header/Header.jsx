@@ -1,13 +1,19 @@
-import React from "react";
-import { Button, Nav, Navbar } from "react-bootstrap";
-import { CgProfile } from "react-icons/cg";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Button, Nav, Navbar, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
 import "./Header.css";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut();
+  };
+  console.log(user);
   return (
     <Navbar
-      className="shadow p-3 mb-2 bg-body-tertiary rounded"
+      className="shadow p-3  bg-body-tertiary rounded"
       bg="white"
       variant="white"
     >
@@ -17,20 +23,41 @@ const Header = () => {
         </Link>
       </Navbar.Brand>
       <Nav className="mx-auto fs-4 fw-semi">
-        <Link to="/" className="text-decoration-none nav-color me-3">
+        <NavLink to="/" className="text-decoration-none nav-color me-3">
           Home
-        </Link>
-        <Link to="/blog" className="text-decoration-none nav-color">
+        </NavLink>
+        <NavLink to="/blog" className="text-decoration-none nav-color">
           Blog 
-        </Link>
+        </NavLink>
       </Nav>
       <Nav>
-        <CgProfile className="fs-1 me-3" />
-        <Link to="/login">
-          <Button className="brand-color-bg fw-bold border border-0">
-            Login
+        {user && (
+          <OverlayTrigger
+            placement="left"
+            overlay={<Tooltip id="tooltip-left">{user?.displayName}</Tooltip>}
+          >
+            <img
+              className="rounded-circle me-3"
+              style={{ height: "35px" }}
+              src={user?.photoURL}
+              alt="user image"
+            />
+          </OverlayTrigger>
+        )}
+        {user ? (
+          <Button
+            onClick={handleLogOut}
+            className="brand-color-bg fw-bold border border-0"
+          >
+            Logout
           </Button>
-        </Link>
+        ) : (
+          <Link to="/login">
+            <Button className="brand-color-bg fw-bold border border-0">
+              Login
+            </Button>
+          </Link>
+        )}
       </Nav>
     </Navbar>
   );

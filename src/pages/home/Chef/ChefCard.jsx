@@ -40,7 +40,6 @@ const ChefCard = ({ chef }) => {
           <Card.Text className="">{chef_short_bio}</Card.Text>
           <p className="d-flex align-items-center justify-content-between fs-4">
             <span>Total recipes: {num_of_recipes}</span>
-            <FcLike />
           </p>
           <Link to={`/recipes/${chef_id}`}>
             <Button className="brand-color-bg fw-bold border border-0">

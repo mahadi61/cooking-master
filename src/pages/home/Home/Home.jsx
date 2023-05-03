@@ -9,8 +9,8 @@ const Home = () => {
   const chefData = useLoaderData();
   return (
     <div>
+      <Banner></Banner>
       <Container>
-        <Banner></Banner>
         <Chef chefData={chefData}></Chef>
         <RecipeList></RecipeList>
       </Container>

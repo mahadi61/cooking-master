@@ -1,11 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { BsGithub } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Register = () => {
-  const { createWithEmailPassword } = useContext(AuthContext);
+  const {
+    createWithEmailPassword,
+    singInWithGoogle,
+    singInWithGithub,
+    updateUser,
+    setLoading,
+  } = useContext(AuthContext);
+
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,8 +21,46 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photoUrl = form.url.value;
+    const name = form.name.value;
+
+    if (password.length < 6) {
+      setError("The password is less than 6 characters");
+      return;
+    }
 
     createWithEmailPassword(email, password)
+      .then((result) => {
+        const user = result.user;
+        if (user) {
+          updateUser(name, photoUrl)
+            .then(() => {
+              console.log("profile Update");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+        setError("");
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setLoading(new Date().getTime());
+    form.reset();
+  };
+
+  const handleGoogleSignIn = () => {
+    singInWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleGithubSingIn = () => {
+    singInWithGithub()
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -22,9 +68,8 @@ const Register = () => {
       .catch((error) => {
         console.log(error);
       });
-
-    form.reset();
   };
+
   return (
     <Container className="my-5">
       <Row className="justify-content-center">
@@ -71,7 +116,7 @@ const Register = () => {
                 required
               />
             </Form.Group>
-
+            <span className="text-danger mt-2">{error}</span>
             <Button
               className="brand-color-bg fw-bold border border-0 w-100 mt-4"
               type="submit"
@@ -81,6 +126,7 @@ const Register = () => {
             <hr className="" />
 
             <Button
+              onClick={handleGoogleSignIn}
               variant="light"
               className="d-flex justify-content-center gap-2 w-100"
             >
@@ -92,6 +138,7 @@ const Register = () => {
               Continue with Google
             </Button>
             <Button
+              onClick={handleGithubSingIn}
               variant="light"
               className="d-flex justify-content-center gap-2 mt-3 w-100"
             >

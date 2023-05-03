@@ -7,3 +7,7 @@
 .nav-color {
   color: #5f264a;
 }
+.navbar .active {
+  font-weight: 700;
+  color: rgba(255, 0, 0, 0.687);
+}
