@@ -30,6 +30,7 @@ const PopularRecipes = () => {
         slidesPerView={4}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
+        className="pb-4"
       >
         <SwiperSlide>
           <Card>
@@ -101,7 +102,7 @@ const PopularRecipes = () => {
             />
             <Card.Body>
               <Card.Text>
-                <h3 className="text-center">Dodhal spicy curry</h3>
+                <h3 className="text-center">Dodhal curry</h3>
               </Card.Text>
             </Card.Body>
           </Card>
