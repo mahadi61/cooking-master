@@ -1,11 +1,9 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-// import { useReactToPrint } from "react-to-print";
-// const ref = React.createRef();
+import Pdf from "react-to-pdf";
 
 const Blog = () => {
-  const ref = useRef();
-  // const handlePrint = useReactToPrint();
+  const ref = React.createRef();
   return (
     <>
       <Container ref={ref} className="my-4">
@@ -107,12 +105,13 @@ const Blog = () => {
       <Container>
         <Row className="ustify-content-md-center">
           <Col sm={6} className="mx-auto text-center my-3 ">
-            <Button
-              className="btn-danger fw-bold"
-              // onClick={handlePrint}
-            >
-              Download pdf
-            </Button>
+            <Pdf targetRef={ref} filename="blog.pdf">
+              {({ toPdf }) => (
+                <Button onClick={toPdf} className="btn-danger fw-bold">
+                  Download pdf
+                </Button>
+              )}
+            </Pdf>
           </Col>
         </Row>
       </Container>

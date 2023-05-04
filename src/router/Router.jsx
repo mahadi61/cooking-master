@@ -17,8 +17,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () =>
-          fetch("https://cooking-master-server-mahadi61.vercel.app/"),
       },
       {
         path: "/login",
