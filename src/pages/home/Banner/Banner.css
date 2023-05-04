@@ -1,3 +1,10 @@
 .banner-title {
-  color: #f6f1f1;
+  color: #ffffff;
+  font-size: 70px;
+}
+
+@media (max-width: 576px) {
+  .banner-title {
+    font-size: 20px;
+  }
 }

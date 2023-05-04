@@ -1,14 +1,16 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { A11y, Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper";
 import "swiper/css";
+import "swiper/css/autoplay";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 const PopularRecipes = () => {
   return (
     <div className="my-3">
-      <h2 className="text-center fw-bold my-3">Most Popular Recipes</h2>
+      <h1 className="text-center fw-bold my-3">Most Popular Recipes</h1>
+      {/* slide is responsive and it will autoplay after 2sec */}
       <Swiper
         breakpoints={{
           0: {
@@ -23,13 +25,12 @@ const PopularRecipes = () => {
             slidesPerView: 4,
           },
         }}
-        modules={[Navigation, Pagination, A11y]}
+        modules={[Navigation, Pagination, Autoplay]}
         navigation
+        autoplay={{ delay: 2000 }}
         pagination={{ clickable: true }}
         spaceBetween={30}
         slidesPerView={4}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
         className="pb-4"
       >
         <SwiperSlide>

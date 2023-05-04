@@ -23,18 +23,22 @@ const AuthProviders = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
   const singInWithGoogle = () => {
+    setLoader(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   const singInWithGithub = () => {
+    setLoader(true);
     return signInWithPopup(auth, githubProvider);
   };
 
   const createWithEmailPassword = (email, password) => {
+    setLoader(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const singInWithEmail = (email, password) => {
+    setLoader(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -46,6 +50,7 @@ const AuthProviders = ({ children }) => {
   };
 
   const logOut = () => {
+    setLoader(true);
     return signOut(auth);
   };
 
@@ -60,6 +65,7 @@ const AuthProviders = ({ children }) => {
     };
   }, [loading]);
 
+  // all context are here
   const authInfo = {
     singInWithGoogle,
     singInWithGithub,
@@ -69,6 +75,7 @@ const AuthProviders = ({ children }) => {
     user,
     updateUser,
     setLoading,
+    loader,
   };
 
   return (

@@ -1,13 +1,17 @@
 import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { BsGithub } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Login = () => {
   const { singInWithEmail, singInWithGoogle, singInWithGithub } =
     useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,6 +22,7 @@ const Login = () => {
     singInWithEmail(email, password)
       .then((result) => {
         const user = result.user;
+        navigate(from, { replace: true });
         form.reset();
       })
       .catch((error) => {
@@ -29,7 +34,7 @@ const Login = () => {
     singInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
   };
@@ -38,7 +43,7 @@ const Login = () => {
     singInWithGithub()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);

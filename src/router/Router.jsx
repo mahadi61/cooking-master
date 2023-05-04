@@ -1,21 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
+import RecipesLayout from "../layout/RecipesLayout";
 import Blog from "../pages/blog/Blog";
+import ErrorPage from "../pages/errorPage/ErrorPage";
 import Home from "../pages/home/Home/Home";
 import Login from "../pages/login/Login";
-import Recipes from "../pages/recipes/Recipes";
 import Register from "../pages/register/Register";
-import RecipesLayout from "../layout/RecipesLayout";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/"),
+        loader: () =>
+          fetch("https://cooking-master-server-mahadi61.vercel.app/"),
       },
       {
         path: "/login",
@@ -27,9 +30,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/recipes/:id",
-        element: <RecipesLayout></RecipesLayout>,
+        element: (
+          <PrivetRoute>
+            <RecipesLayout></RecipesLayout>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/recipes/${params.id}`),
+          fetch(
+            `https://cooking-master-server-mahadi61.vercel.app/recipes/${params.id}`
+          ),
       },
       {
         path: "/blog",

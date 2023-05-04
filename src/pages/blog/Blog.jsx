@@ -1,12 +1,14 @@
-import React from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
-// import ReactToPdf from 'react-to-pdf';
+import React, { useRef } from "react";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
+// import { useReactToPrint } from "react-to-print";
 // const ref = React.createRef();
 
 const Blog = () => {
+  const ref = useRef();
+  // const handlePrint = useReactToPrint();
   return (
     <>
-      <Container className="my-4">
+      <Container ref={ref} className="my-4">
         <Row className="justify-content-md-center  my-2">
           <Col md={6}>
             <Card>
@@ -102,9 +104,18 @@ const Blog = () => {
           </Col>
         </Row>
       </Container>
-      {/* <ReactToPdf targetRef={ref} filename="blog.pdf">
-        {({ toPdf }) => <button onClick={toPdf}>Generate pdf</button>}
-      </ReactToPdf> */}
+      <Container>
+        <Row className="ustify-content-md-center">
+          <Col sm={6} className="mx-auto text-center my-3 ">
+            <Button
+              className="btn-danger fw-bold"
+              // onClick={handlePrint}
+            >
+              Download pdf
+            </Button>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };
