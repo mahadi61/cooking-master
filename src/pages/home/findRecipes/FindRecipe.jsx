@@ -12,7 +12,7 @@ const FindRecipe = () => {
           alt="side image"
         />
         <div className="position-absolute top-50 start-50 translate-middle text-white text-center">
-          <input placeholder="What do want?" className="px-3 my-3" />
+          <input placeholder="What do you want to eat?" className="px-3 my-3" />
           <Button variant="danger" className="fw-bold">
             Find Recipe
           </Button>

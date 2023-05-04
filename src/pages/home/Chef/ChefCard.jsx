@@ -1,9 +1,8 @@
 import React from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import { BiLike } from "react-icons/bi";
-import { FcLike } from "react-icons/fc";
+import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
-
 const ChefCard = ({ chef }) => {
   const {
     chef_id,
@@ -17,12 +16,14 @@ const ChefCard = ({ chef }) => {
   return (
     <Col>
       <Card className="d-flex flex-column justify-content-between">
-        <div className="img-height">
-          <Card.Img
-            style={{ height: "400px" }}
-            className="object-fit-cover border rounded"
-            src={chef_picture}
-          />
+        <div className="text-center">
+          <LazyLoad>
+            <img
+              style={{ height: "400px" }}
+              className="mt-4 border rounded"
+              src={chef_picture}
+            />
+          </LazyLoad>
         </div>
         <Card.Body>
           <Card.Title className="text-center fw-bold fs-2 ">
@@ -43,7 +44,7 @@ const ChefCard = ({ chef }) => {
           </p>
           <Link to={`/recipes/${chef_id}`}>
             <Button className="brand-color-bg fw-bold border border-0">
-              See Recipes
+              View Recipes
             </Button>
           </Link>
         </Card.Body>

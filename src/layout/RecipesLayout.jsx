@@ -10,7 +10,7 @@ const RecipesLayout = () => {
   const [chefData, setChefData] = useState({});
   const { chef_name } = chefData;
   useEffect(() => {
-    fetch(`http://localhost:5000/${id}`)
+    fetch(`https://cooking-master-server-mahadi61.vercel.app/${id}`)
       .then((res) => res.json())
       .then((data) => setChefData(data));
   }, []);

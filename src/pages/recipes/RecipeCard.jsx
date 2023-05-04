@@ -18,7 +18,7 @@ const RecipeCard = ({ singleRecipe }) => {
   return (
     <Col>
       <Card
-        style={{ minHeight: "500px" }}
+        style={{ minHeight: "450px" }}
         className="d-flex flex-column shadow bg-body rounded"
       >
         <Card.Body>

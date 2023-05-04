@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { BsGithub } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const Register = () => {
@@ -14,7 +14,7 @@ const Register = () => {
   } = useContext(AuthContext);
 
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -34,14 +34,15 @@ const Register = () => {
         if (user) {
           updateUser(name, photoUrl)
             .then(() => {
-              console.log("profile Update");
+              // console.log("profile Update");
             })
             .catch((error) => {
               console.log(error);
             });
         }
         setError("");
-        console.log(user);
+        navigate("/");
+        // console.log(user);
       })
       .catch((error) => {
         console.log(error);
@@ -54,7 +55,8 @@ const Register = () => {
     singInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
+        navigate("/");
       })
       .catch((error) => console.log(error));
   };
@@ -63,7 +65,8 @@ const Register = () => {
     singInWithGithub()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
