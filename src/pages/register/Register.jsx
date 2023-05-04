@@ -34,6 +34,7 @@ const Register = () => {
         if (user) {
           updateUser(name, photoUrl)
             .then(() => {
+              setLoading(new Date().getTime());
               // console.log("profile Update");
             })
             .catch((error) => {
@@ -47,7 +48,6 @@ const Register = () => {
       .catch((error) => {
         console.log(error);
       });
-    setLoading(new Date().getTime());
     form.reset();
   };
 
